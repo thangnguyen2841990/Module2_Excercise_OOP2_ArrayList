@@ -41,7 +41,7 @@ public class Bill {
 
     @Override
     public String toString() {
-        return "Thông tin về hộ sử dụng điện: " + customer.toString() + "\n" +
-                "Chỉ số cũ: " + getOldIndex() + ", Chỉ số mới: " + getNewIndex() + ", Số tiền phải nộp: " + payMoney() + "(VND)";
+        return customer.toString() +
+                ", " + getOldIndex() + ", " + getNewIndex() + ", " + payMoney() ;
     }
 }

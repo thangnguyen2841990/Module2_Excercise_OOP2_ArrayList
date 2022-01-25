@@ -1,5 +1,6 @@
 package com.codegym;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -8,8 +9,13 @@ public class Main {
     public static void main(String[] args) {
         int choice;
         BillManagement billManagement = new BillManagement();
-        menu();
+        try {
+            billManagement.readFiles("bill.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         do {
+            menu();
             System.out.println("Nhập lựa chọn của bạn: ");
             choice = scanner.nextInt();
             if (choice > 2) {
@@ -37,6 +43,11 @@ public class Main {
 
                     break;
                 }
+            }
+            try {
+                billManagement.writeToFiles("bill.txt");
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         } while (choice != 0);
     }

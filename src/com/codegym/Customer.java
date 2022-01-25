@@ -40,6 +40,6 @@ public class Customer {        //Customer
 
     @Override
     public String toString() {
-        return "Chủ hộ: " + getName() + ", Số nhà: " + getApartmentNumber() + ", Mã số công tơ: " + getMeterCodeNumber();
+        return getName() + ", " + getApartmentNumber() + ", " + getMeterCodeNumber();
     }
 }
