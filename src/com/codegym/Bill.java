@@ -1,6 +1,8 @@
 package com.codegym;
 
-public class Bill {
+import java.io.Serializable;
+
+public class Bill implements Serializable {
     private int oldIndex;
     private int newIndex;
     private Customer customer;
@@ -42,6 +44,6 @@ public class Bill {
     @Override
     public String toString() {
         return customer.toString() +
-                ", " + getOldIndex() + ", " + getNewIndex() + ", " + payMoney() ;
+                ", chỉ số cũ: " + getOldIndex() + ", chỉ số mới: " + getNewIndex() + ", số tiền phải trả: " + payMoney() ;
     }
 }

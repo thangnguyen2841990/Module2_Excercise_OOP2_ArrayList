@@ -1,6 +1,8 @@
 package com.codegym;
 
-public class Customer {        //Customer
+import java.io.Serializable;
+
+public class Customer implements Serializable {        //Customer
     private String name;
     private int apartmentNumber;    // sửa thành: address;
     private int meterCodeNumber;  //meterCode
@@ -40,6 +42,6 @@ public class Customer {        //Customer
 
     @Override
     public String toString() {
-        return getName() + ", " + getApartmentNumber() + ", " + getMeterCodeNumber();
+        return "Họ tên: "+ getName() + ", số nhà: " + getApartmentNumber() + ", má số công tơ: " + getMeterCodeNumber();
     }
 }

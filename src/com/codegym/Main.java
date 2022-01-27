@@ -10,10 +10,13 @@ public class Main {
         int choice;
         BillManagement billManagement = new BillManagement();
         try {
-            billManagement.readFiles("bill.txt");
+            billManagement.readFile1();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
+
         do {
             menu();
             System.out.println("Nhập lựa chọn của bạn: ");
@@ -25,27 +28,29 @@ public class Main {
                 case 1: {
                     System.out.println("----Hiển thị thông tin biên lai----");
                     billManagement.displayAllBills();
-                    if (billManagement.getBills().size() == 0){
+                    if (billManagement.getBills().size() == 0) {
                         System.out.println("Không có biên lai để hiển thị!");
                     }
                     break;
                 }
                 case 2: {
                     System.out.println("----NHập biên lai----");
-                    System.out.println("Nhập số lượng biên lai cần nhập: ");
-                    int n = scanner.nextInt();
-                    for (int i = 0; i < n; i++) {
-                        System.out.println("Nhập thôn tin biên lai số: "+ (i+1));
-                        Bill newBill = inputNewBill();
-                        billManagement.addNewBill(newBill);
-                        System.out.println("Đã thêm biên lai thành công!");
-                    }
+                    Bill newBill = inputNewBill();
+                    billManagement.addNewBill(newBill);
+                    System.out.println("Đã thêm biên lai thành công!");
 
+
+                    break;
+                }
+                case 3 : {
+                    System.out.println("----Xóa hết biên lai----");
+                    billManagement.removeAllBill();
+                    System.out.println("Đã xóa hết biên lai!");
                     break;
                 }
             }
             try {
-                billManagement.writeToFiles("bill.txt");
+                billManagement.writeToFile1(billManagement.getBills());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -56,6 +61,7 @@ public class Main {
         System.out.println("MENU QUẢN LÝ KHÁCH HÀNG: ");
         System.out.println("1. Hiển thị thông tin biên lai ");
         System.out.println("2. Nhập biên lai ");
+        System.out.println("3. Xóa hết bien lai.");
         System.out.println("0. Thoát");
 
     }
@@ -72,7 +78,7 @@ public class Main {
         int oldIndex = scanner.nextInt();
         System.out.println("Nhập chỉ số công tơ mới: ");
         int newIndex = scanner.nextInt();
-        return new Bill(oldIndex,newIndex,new Customer(name,address,code));
+        return new Bill(oldIndex, newIndex, new Customer(name, address, code));
     }
 
 
